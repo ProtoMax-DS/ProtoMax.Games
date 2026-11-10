@@ -1,0 +1,251 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><title>PROTOMAX GAMES</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Jogos de navegador feitos por hobby, grátis para jogar. Miau Brawl e o que vem por aí.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Chakra+Petch:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: faixa de logo no topo, título à esquerda e chamada à direita, depois seções em duas colunas com linha de circuito marcando cada título */
+:root{
+  --bg:#050908;
+  --panel:#0b1512;
+  --panel2:#0f1c17;
+  --line:#1b3328;
+  --ink:#e6f4ec;
+  --mute:#93aa9d;
+  --neon:#39ff7a;
+  --neon-ink:#03150a;
+  --amber:#ffb340;
+  --display:"Bungee","Impact",sans-serif;
+  --ui:"Chakra Petch","Segoe UI",system-ui,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--ui);font-size:16px;line-height:1.55;
+  background-image:radial-gradient(900px 420px at 50% -80px,rgba(57,255,122,.10),transparent 70%);background-repeat:no-repeat;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--neon);outline-offset:3px}
+.wrap{max-width:1100px;margin:0 auto}
+
+/* topo */
+.top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 20px;padding-block:14px}
+.brand{font-family:var(--display);font-size:20px;color:var(--neon);text-decoration:none;letter-spacing:.02em;text-shadow:0 0 18px rgba(57,255,122,.45)}
+.brand span{color:var(--mute);font-size:.62em;letter-spacing:.3em;margin-left:.5em;text-shadow:none}
+nav{display:flex;gap:4px 22px;flex-wrap:wrap}
+nav a{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);text-decoration:none;padding:6px 0;border-bottom:2px solid transparent}
+nav a:hover{color:var(--ink);border-bottom-color:var(--neon)}
+
+/* hero */
+.hero-img{border:1px solid var(--line);border-radius:6px;overflow:hidden;box-shadow:0 0 60px rgba(57,255,122,.12)}
+.hero-img img{width:100%;aspect-ratio:2.1/1;object-fit:cover;object-position:center 48%}
+.hero-copy{display:grid;grid-template-columns:1.25fr 1fr;gap:20px 48px;align-items:end;padding-block:34px 18px}
+.hero-copy h1{font-family:var(--display);font-weight:400;font-size:clamp(28px,5vw,48px);line-height:1.05;margin:0;text-wrap:balance}
+.hero-copy h1 em{font-style:normal;color:var(--neon);text-shadow:0 0 22px rgba(57,255,122,.4)}
+.hero-copy p{margin:0 0 16px;color:var(--mute);max-width:46ch}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-block;font-family:var(--display);font-size:15px;letter-spacing:.03em;text-decoration:none;padding:.8em 1.4em;border-radius:4px;border:0;cursor:pointer;background:var(--neon);color:var(--neon-ink);box-shadow:0 4px 0 #14803c,0 0 24px rgba(57,255,122,.28);transition:transform .08s}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 #14803c}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px #2c4a3b}
+.btn.ghost:hover{box-shadow:inset 0 0 0 2px var(--neon)}
+.btn[disabled],.btn.off{background:#122019;color:#5f7a6c;box-shadow:inset 0 0 0 2px #1b3328;cursor:default;pointer-events:none}
+
+/* seções */
+section{padding-block:56px 12px}
+.sh{display:flex;align-items:center;gap:14px;margin:0 0 26px}
+.sh h2{font-family:var(--display);font-weight:400;font-size:clamp(22px,3.4vw,30px);margin:0;white-space:nowrap}
+.sh i{flex:1;height:1px;background:linear-gradient(90deg,var(--neon),rgba(57,255,122,.06));position:relative;min-width:30px}
+.sh i::after{content:"";position:absolute;right:0;top:-3px;width:7px;height:7px;border-radius:50%;background:var(--neon);box-shadow:0 0 10px var(--neon)}
+
+/* jogos */
+.feat{display:grid;grid-template-columns:1.15fr 1fr;gap:0;background:var(--panel);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.feat .shot{position:relative;background:#000}
+.feat .shot img{width:100%;height:100%;object-fit:cover;aspect-ratio:16/9}
+.feat .body{padding:clamp(18px,3vw,30px);display:flex;flex-direction:column;gap:12px;justify-content:center;min-width:0}
+.badge{align-self:flex-start;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);border:1px solid rgba(255,179,64,.5);padding:2px 9px;border-radius:999px}
+.feat h3{font-family:var(--display);font-weight:400;font-size:clamp(26px,4vw,38px);line-height:1;margin:0;color:var(--amber);text-shadow:0 0 18px rgba(255,179,64,.25)}
+.feat p{margin:0;color:var(--ink);opacity:.9}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
+.tags li{font-size:12px;color:var(--mute);border:1px solid var(--line);padding:1px 9px;border-radius:3px}
+.soon{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:16px}
+.soon div{border:1px dashed #2a4638;border-radius:6px;padding:18px 20px;color:var(--mute);min-width:0}
+.soon b{display:block;font-family:var(--display);font-weight:400;font-size:16px;color:var(--ink);margin-bottom:4px}
+.soon span{font-size:14px}
+
+/* sobre */
+.about{display:grid;grid-template-columns:1fr 1.15fr;gap:28px 56px}
+.about p{margin:0 0 14px;color:var(--ink);opacity:.92;max-width:52ch}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:0;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:34px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.steps li:first-child{border-top:1px solid var(--line)}
+.steps li::before{content:counter(s);font-family:var(--display);font-size:20px;color:var(--neon);line-height:1.1}
+.steps b{display:block;font-weight:700}
+.steps span{color:var(--mute);font-size:15px}
+
+/* apoio */
+.support{display:grid;grid-template-columns:1fr 1fr;gap:28px 48px;align-items:start}
+.support p{margin:0 0 14px;max-width:50ch}
+.pix{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:clamp(16px,3vw,24px);display:grid;gap:12px;min-width:0}
+.pix label{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+.pixrow{display:flex;gap:8px;flex-wrap:wrap}
+.pixrow input{flex:1 1 200px;min-width:0;background:#07100c;border:1px solid #24493a;border-radius:4px;color:var(--ink);font:600 15px var(--ui);padding:.7em .8em}
+.pixrow input:disabled{color:#5f7a6c}
+.pixrow .btn{font-size:14px;padding:.7em 1.1em}
+.note{font-size:13px;color:var(--mute);margin:0}
+.links{display:flex;flex-wrap:wrap;gap:8px}
+.links a{font-size:14px;font-weight:600;text-decoration:none;border:1px solid #2c4a3b;padding:.45em 1em;border-radius:4px}
+.links a:hover{border-color:var(--neon)}
+
+/* redes */
+.social{display:flex;flex-wrap:wrap;gap:12px}
+.soc{display:flex;align-items:center;gap:12px;min-width:min(100%,250px);background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:14px 18px;text-decoration:none}
+a.soc:hover{border-color:var(--neon)}
+.soc b{font-family:var(--display);font-weight:400;font-size:17px;display:block}
+.soc span{font-size:13px;color:var(--mute)}
+.soc.off{opacity:.65}
+
+footer{margin-top:64px;border-top:1px solid var(--line);padding-block:22px 34px;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;font-size:13px;color:var(--mute)}
+footer b{font-family:var(--display);font-weight:400;color:var(--neon);letter-spacing:.04em}
+
+@media (max-width:760px){
+  .hero-copy,.feat,.about,.support{grid-template-columns:1fr}
+  .soon{grid-template-columns:1fr}
+  section{padding-top:44px}
+  .hero-img img{aspect-ratio:16/9}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#inicio">PROTOMAX<span>GAMES</span></a>
+    <nav aria-label="Seções">
+      <a href="#jogos">Jogos</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#apoie">Apoie</a>
+      <a href="#redes">Redes</a>
+    </nav>
+  </header>
+
+  <main id="inicio">
+    <div class="hero-img"><img src="img/hero.jpg" width="1800" height="981" alt="Logo PROTOMAX GAMES em letras metálicas com circuitos verdes brilhando sobre uma bancada de eletrônica"></div>
+    <div class="hero-copy">
+      <h1>Jogos pequenos, feitos por hobby e <em>de graça</em>.</h1>
+      <div>
+        <p>Jogos em HTML5 que abrem direto no navegador, no computador ou no celular. Sem instalar nada e sem criar conta.</p>
+        <div class="btns">
+          <a class="btn" href="jogos/miau-brawl/index.html">Jogar Miau Brawl</a>
+          <a class="btn ghost" href="#apoie">Apoiar o projeto</a>
+        </div>
+      </div>
+    </div>
+
+    <section id="jogos">
+      <div class="sh"><h2>Jogos</h2><i></i></div>
+      <article class="feat">
+        <a class="shot" href="jogos/miau-brawl/index.html" aria-label="Jogar Miau Brawl"><img src="img/miau-brawl.jpg" width="960" height="540" loading="lazy" alt="Cena do Miau Brawl: um gato laranja enfrenta ratos-robô, um pombo-drone e um cão em uma rua à noite com neon"></a>
+        <div class="body">
+          <span class="badge">Versão de teste</span>
+          <h3>Miau Brawl</h3>
+          <p>Beat 'em up de gatos. Enfrente ratos-robô, pombos-drone, cães brutamontes, gambás de gás e esquilos-bomba. Suba de nível, monte sua build escolhendo uma entre três habilidades e derrote os chefes. Na onda 20 chega o chefe final. Vencer abre o modo Infinito e o Desafio dos 5, e quem maximizar tudo libera o Trio de Chefes.</p>
+          <ul class="tags"><li>3 gatos</li><li>14 habilidades</li><li>3 chefes</li><li>4 modos</li><li>Teclado ou toque</li><li>Grátis</li></ul>
+          <div class="btns"><a class="btn" href="jogos/miau-brawl/index.html">Jogar agora</a></div>
+        </div>
+      </article>
+      <div class="soon">
+        <div><b>Próximo jogo</b><span>Em desenvolvimento, ainda sem nome. Quando ficar jogável, aparece aqui.</span></div>
+        <div><b>Você decide</b><span>Quando as redes estiverem no ar, enquetes vão escolher o que vem depois.</span></div>
+      </div>
+    </section>
+
+    <section id="sobre">
+      <div class="sh"><h2>Como os jogos nascem</h2><i></i></div>
+      <div class="about">
+        <div>
+          <p>A PROTOMAX GAMES é um projeto de hobby. Eu dirijo as ideias e testo cada jogo. A programação é feita pela Claude, uma IA da Anthropic.</p>
+          <p>Os personagens, a arte e os sons dos jogos são originais, criados para o projeto. Nada de personagens, músicas ou marcas de terceiros.</p>
+        </div>
+        <ol class="steps">
+          <li><div><b>Ideia</b><span>Eu conto como o jogo deve ser e qual é o clima.</span></div></li>
+          <li><div><b>Primeira versão</b><span>A Claude escreve o jogo em HTML5, já jogável.</span></div></li>
+          <li><div><b>Teste</b><span>Eu jogo, aponto o que está pesado, injusto ou sem graça.</span></div></li>
+          <li><div><b>Ajuste</b><span>A gente repete até ficar bom o bastante para publicar.</span></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="apoie">
+      <div class="sh"><h2>Apoie, se quiser</h2><i></i></div>
+      <div class="support">
+        <div>
+          <p>Todos os jogos são grátis e vão continuar sendo. Se algum deles te divertiu e você quer ajudar a continuar um projeto, qualquer valor é muito bem-vindo.</p>
+          <p>O apoio ajuda a pagar domínio, hospedagem e ferramentas, e a dedicar mais tempo aos jogos. Sem obrigação nenhuma.</p>
+          <div class="links" id="altLinks" hidden></div>
+        </div>
+        <div class="pix">
+          <label for="pixKey">Chave Pix</label>
+          <div class="pixrow">
+            <input id="pixKey" type="text" readonly value="" aria-describedby="pixNote">
+            <button class="btn" id="pixCopy" type="button">Copiar</button>
+          </div>
+          <p class="note" id="pixNote"></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="redes">
+      <div class="sh"><h2>Redes</h2><i></i></div>
+      <div class="social" id="social"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div><b>PROTOMAX GAMES</b> &nbsp;·&nbsp; © 2026</div>
+    <div>Jogos originais, feitos por hobby com a Claude (Anthropic).</div>
+  </footer>
+</div>
+
+<script>
+/* Preencha aqui quando as contas existirem. Campo vazio = aparece como "em breve". */
+const CONFIG = {
+  pixKey: '',            // sua chave Pix (e-mail, telefone, CPF/CNPJ ou chave aleatória)
+  instagram: '',         // ex.: 'https://instagram.com/seuusuario'
+  discord: '',           // ex.: 'https://discord.gg/seuconvite'
+  extras: []             // ex.: [{ nome: 'Apoia.se', url: 'https://apoia.se/...' }, { nome: 'Ko-fi', url: 'https://ko-fi.com/...' }]
+};
+
+(function () {
+  var key = document.getElementById('pixKey'), copy = document.getElementById('pixCopy'), note = document.getElementById('pixNote');
+  if (CONFIG.pixKey) {
+    key.value = CONFIG.pixKey;
+    note.textContent = 'Toque em copiar e cole no app do seu banco, na opção Pix.';
+    copy.addEventListener('click', function () {
+      function done(ok) { copy.textContent = ok ? 'Copiado!' : 'Selecione e copie'; if (!ok) { key.select(); } setTimeout(function () { copy.textContent = 'Copiar'; }, 2200); }
+      try { navigator.clipboard.writeText(CONFIG.pixKey).then(function () { done(true); }, function () { done(false); }); } catch (e) { done(false); }
+    });
+  } else {
+    key.value = 'Chave Pix em breve';
+    key.disabled = true; copy.disabled = true; copy.classList.add('off');
+    note.textContent = 'A chave será publicada aqui assim que estiver pronta.';
+  }
+
+  var alt = document.getElementById('altLinks');
+  if (CONFIG.extras && CONFIG.extras.length) {
+    alt.hidden = false;
+    CONFIG.extras.forEach(function (x) {
+      var a = document.createElement('a'); a.href = x.url; a.target = '_blank'; a.rel = 'noopener'; a.textContent = x.nome; alt.appendChild(a);
+    });
+  }
+
+  var soc = document.getElementById('social');
+  [['Instagram', 'Bastidores, clipes dos jogos e enquetes.', CONFIG.instagram], ['Discord', 'Conversa, sugestões e testes antes de todo mundo.', CONFIG.discord]].forEach(function (r) {
+    var el = document.createElement(r[2] ? 'a' : 'div'); el.className = 'soc' + (r[2] ? '' : ' off');
+    if (r[2]) { el.href = r[2]; el.target = '_blank'; el.rel = 'noopener'; }
+    el.innerHTML = '<div><b>' + r[0] + '</b><span>' + (r[2] ? r[1] : 'Em breve') + '</span></div>';
+    soc.appendChild(el);
+  });
+})();
+</script>
+</body></html>
